@@ -1,2 +1,3 @@
 # news-room
-Created with CodeSandbox
+
+News room app. News app with React, Redux, React Router.
