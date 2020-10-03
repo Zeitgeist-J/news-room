@@ -3,6 +3,7 @@ import Navbaritem from "./NavbarItem";
 import Divider from "./Divider";
 import Input from "./Input";
 import store from "../store";
+import { Link } from "react-router-dom";
 
 export default class NavBar extends React.Component {
   state = { items: this.props.items };
@@ -25,7 +26,9 @@ export default class NavBar extends React.Component {
     return (
       <div className="navbar">
         <div className="navbar-data">
-          <h1>News Room</h1>
+          <Link to="/" className="homeLink">
+            <h1>News Room</h1>
+          </Link>
           <h3 className="title">Categorías</h3>
           <Divider />
           {items.map((item, index) => (

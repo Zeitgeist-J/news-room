@@ -4,6 +4,7 @@ const SET = "SET";
 const SELECT = "SELECT";
 const CLEAR_SELECTED = "CLEAR_SELECTED";
 const CLEAR_NEWS = "CLEAR_NEWS";
+const API_BASE = "https://api.canillitapp.com";
 
 const setNews = (news) => ({
   type: SET,
@@ -37,21 +38,19 @@ const getFromEndpoint = (url) => (dispatch) => {
     });
 };
 
-const getLastest = (dispatch) => {
-  const endpoint = `https://api.canillitapp.com/latest/${moment().format(
-    "yyyy-MM-DD"
-  )}`;
-  getFromEndpoint(endpoint)(dispatch);
+const getLastest = () => {
+  const endpoint = `${API_BASE}/latest/${moment().format("yyyy-MM-DD")}`;
+  return getFromEndpoint(endpoint);
 };
 
-const getCategory = (id, dispatch) => {
-  const endpoint = `https://api.canillitapp.com/news/category/${id}`;
-  getFromEndpoint(endpoint)(dispatch);
+const getCategory = (id) => {
+  const endpoint = `${API_BASE}/news/category/${id}`;
+  return getFromEndpoint(endpoint);
 };
 
-const getSearch = (searchValue, dispatch) => {
-  const endpoint = `https://api.canillitapp.com/search/${searchValue}`;
-  getFromEndpoint(endpoint)(dispatch);
+const getSearch = (searchValue) => {
+  const endpoint = `${API_BASE}/search/${searchValue}`;
+  return getFromEndpoint(endpoint);
 };
 
 export const selectCategory = (id) => (dispatch) => {
@@ -66,18 +65,18 @@ export const clearCategory = () => (dispatch) => {
 
 export const getNews = (newsType, searchValue) => (dispatch) => {
   dispatch(clearNews());
+  let newsAction;
   switch (newsType) {
     case "category":
-      // console.log(searchValue);
-      // dispatch(changeCategory(searchValue));
-      getCategory(searchValue, dispatch);
+      newsAction = getCategory(searchValue);
       break;
     case "search":
       dispatch(clearSelected());
-      getSearch(searchValue, dispatch);
+      newsAction = getSearch(searchValue);
       break;
     default:
-      getLastest(dispatch);
+      newsAction = getLastest();
       break;
   }
+  newsAction(dispatch);
 };

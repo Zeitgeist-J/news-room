@@ -12,6 +12,11 @@ body {
   min-height: 100vh;
 }
 
+.homeLink {
+  text-decoration: none;
+  color: wheat;
+}
+
 .navbar {
   background-color: #001010;
   color: wheat;
@@ -82,6 +87,7 @@ body {
 
 .news-container {
   background-color: wheat;
+  background-image: url("https://www.transparenttextures.com/patterns/green-cup.png");
   width: 100%;
   flex-flow: row wrap;
   justify-content: center;

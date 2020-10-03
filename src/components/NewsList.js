@@ -58,7 +58,11 @@ export default withRouter(
 const NewsBlock = ({ news }) => {
   if (news) {
     return news instanceof Array ? (
-      news.map((news, index) => <News key={index} {...news} />)
+      <>
+        {news.map((news, index) => (
+          <News key={index} {...news} />
+        ))}
+      </>
     ) : (
       <NotFound message={news} />
     );

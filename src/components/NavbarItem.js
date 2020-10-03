@@ -10,7 +10,9 @@ const NavbarItem = ({ id, icon, name, selected, selectCategory }) => (
       className={`navbar-item is-selected-${selected.toString()}`}
       onClick={() => selectCategory(id)}
     >
-      <p>{name}</p>
+      <p>
+        {icon}&nbsp; {name}
+      </p>
     </div>
   </Link>
 );
