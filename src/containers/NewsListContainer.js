@@ -1,11 +1,13 @@
 import { connect } from "react-redux";
 import NewsList from "../components/NewsList";
-import { getNews } from "../actions/index";
+import { getNews, selectCategory, clearSelected } from "../actions/index";
 
 const mapStateToProps = (state) => state;
 
 const mapActionsToProps = {
-  getNews
+  getNews,
+  selectCategory,
+  clearSelected
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(NewsList);

@@ -10,7 +10,18 @@ export default withRouter(
 
     setNews = () => {
       const [, type, value] = this.props.location.pathname.split("/");
+      this.checkSelectedItem(type, Number(value));
       this.props.getNews(type, value);
+    };
+
+    checkSelectedItem = (type, value) => {
+      const selectedItem = store.getState().items.find((item) => item.selected);
+      if (type === "category") {
+        const isDifferent = selectedItem && selectedItem.id === value;
+        if (!isDifferent) {
+          this.props.selectCategory(value);
+        }
+      }
     };
 
     mapNewsToState = () => {
