@@ -1,8 +1,8 @@
 import React from "react";
-import Navbaritem from "./NavbarItem";
-import Divider from "./Divider";
-import Input from "./Input";
-import store from "../store";
+import Navbaritem from "../reusable-components/NavbarItem";
+import Divider from "../reusable-components/Divider";
+import Input from "../reusable-components/Input";
+import store from "../../store";
 import { Link } from "react-router-dom";
 
 export default class NavBar extends React.Component {

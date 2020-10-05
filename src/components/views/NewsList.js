@@ -1,8 +1,8 @@
 import React from "react";
-import News from "./News";
+import News from "../reusable-components/News";
 import NotFound from "./NotFoundNews";
 import { withRouter } from "react-router";
-import store from "../store";
+import store from "../../store";
 
 export default withRouter(
   class NewsList extends React.Component {
