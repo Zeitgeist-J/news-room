@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/views/Navbar";
 import { selectCategory, clearCategory } from "../actions/index";
 
 const mapStateToProps = (state) => state;

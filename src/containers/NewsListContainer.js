@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import NewsList from "../components/NewsList";
+import NewsList from "../components/views/NewsList";
 import { getNews, selectCategory, clearSelected } from "../actions/index";
 
 const mapStateToProps = (state) => state;
