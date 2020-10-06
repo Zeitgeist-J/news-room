@@ -5,7 +5,7 @@ import Input from "../reusable-components/Input";
 import store from "../../store";
 import { Link } from "react-router-dom";
 
-export default class NavBar extends React.Component {
+export default class NavBarContainer extends React.Component {
   state = { items: this.props.items };
 
   setItems = () => {
@@ -24,29 +24,37 @@ export default class NavBar extends React.Component {
     const { selectCategory, clearCategory } = this.props;
     const { items } = this.state;
     return (
-      <div className="navbar">
-        <div className="navbar-data">
-          <Link to="/" className="homeLink">
-            <h1>News Room</h1>
-          </Link>
-          <h3 className="title">Categorías</h3>
-          <Divider />
-          {items.map((item, index) => (
-            <Navbaritem
-              key={`item-${index}`}
-              {...item}
-              selectCategory={selectCategory}
-            />
-          ))}
-          <Divider />
-          <Navbaritem
-            name="Recientes"
-            selected={!items.some((item) => item.selected)}
-            selectCategory={clearCategory}
-          />
-          <Input />
-        </div>
-      </div>
+      <NavBar
+        items={items}
+        selectCategory={selectCategory}
+        clearCategory={clearCategory}
+      />
     );
   }
 }
+
+const NavBar = ({ items, selectCategory, clearCategory }) => (
+  <div className="navbar">
+    <div className="navbar-data">
+      <Link to="/" className="homeLink">
+        <h1>News Room</h1>
+      </Link>
+      <h3 className="title">Categorías</h3>
+      <Divider />
+      {items.map((item, index) => (
+        <Navbaritem
+          key={`item-${index}`}
+          {...item}
+          selectCategory={selectCategory}
+        />
+      ))}
+      <Divider />
+      <Navbaritem
+        name="Recientes"
+        selected={!items.some((item) => item.selected)}
+        selectCategory={clearCategory}
+      />
+      <Input />
+    </div>
+  </div>
+);

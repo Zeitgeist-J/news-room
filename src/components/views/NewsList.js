@@ -5,7 +5,7 @@ import { withRouter } from "react-router";
 import store from "../../store";
 
 export default withRouter(
-  class NewsList extends React.Component {
+  class NewsListContainer extends React.Component {
     state = { news: this.props.news };
 
     setNews = () => {
@@ -48,14 +48,14 @@ export default withRouter(
 
       return (
         <div className="news-container">
-          <NewsBlock news={news} />
+          <NewsList news={news} />
         </div>
       );
     }
   }
 );
 
-const NewsBlock = ({ news }) => {
+const NewsList = ({ news }) => {
   if (news) {
     return news instanceof Array ? (
       <>
